@@ -1,7 +1,7 @@
 // index.js
 
 import {
-  FETCH_CART_ITEMS,
+  // FETCH_CART_ITEMS,
   ADD_TO_CART,
   REMOVE_FROM_CART,
   UPDATE_CART_ITEM_QUANTITY
@@ -10,12 +10,13 @@ import {push} from "connected-react-router";
 // import axios from 'axios';
 // const apiUrl = 'http://localhost:8080/api/products';
 
-export const fetchCartItemsAction = (cartItems) => {
-  return {
-    type: FETCH_CART_ITEMS,
-    cartItems
-  };
-};
+// export const fetchCartItemsAction = (cartItems) => {
+//   return {
+//     type: FETCH_CART_ITEMS,
+//     cartItems
+//   };
+// };
+
 export const addToCartAction = product => {
   return {
     type: ADD_TO_CART,
@@ -23,33 +24,33 @@ export const addToCartAction = product => {
   };
 };
 
-export const removeFromCartAction = product => {
+export const removeFromCartAction = index => {
   return {
     type: REMOVE_FROM_CART,
-    product
+    index
   };
 };
 
-export const updateCartItemQuantityAction = (product,qty) => {
+export const updateCartItemQuantityAction = (index, operation) => {
   return {
     type: UPDATE_CART_ITEM_QUANTITY,
-    product,
-    qty
+    index,
+    operation
   };
 };
 
-export const fetchCartItems = () => {
-  return (dispatch) => {
-      dispatch(fetchCartItemsAction(sampleCartItems));
-    // return axios.get(apiUrl)
-    //   .then(response => {
-    //     dispatch(fetchData(response.data))
-    //   })
-    //   .catch(error => {
-    //     throw(error);
-    //   });
-  };
-};
+// export const fetchCartItems = () => {
+//   return (dispatch) => {
+//       dispatch(fetchCartItemsAction(sampleCartItems));
+//     // return axios.get(apiUrl)
+//     //   .then(response => {
+//     //     dispatch(fetchData(response.data))
+//     //   })
+//     //   .catch(error => {
+//     //     throw(error);
+//     //   });
+//   };
+// };
 
 
 export const addToCart = product => {
@@ -66,9 +67,9 @@ export const addToCart = product => {
   };
 };
 
-export const removeFromCart = product => {
+export const removeFromCart = index => {
   return dispatch => {
-    dispatch(removeFromCartAction(product));
+    dispatch(removeFromCartAction(index));
     // return axios.get(apiUrl)
     //   .then(response => {
     //     dispatch(fetchData(response.data))
@@ -79,9 +80,9 @@ export const removeFromCart = product => {
   };
 };
 
-export const updateCartItemQuantity = (product,qty) => {
+export const updateCartItemQuantity = (index,operation) => {
   return dispatch => {
-    dispatch(updateCartItemQuantityAction(product,qty));
+    dispatch(updateCartItemQuantityAction(index,operation));
     // return axios.get(apiUrl)
     //   .then(response => {
     //     dispatch(fetchData(response.data))
@@ -93,17 +94,17 @@ export const updateCartItemQuantity = (product,qty) => {
 };
 
 
-const sampleCartItems = [
-  {
-    id: 3,
-    qty: 2,
-  },
-  {
-    id: 5,
-    qty: 3,
-  },
-  {
-    id: 1,
-    qty: 1,
-  },
-];
+// const sampleCartItems = [
+//   {
+//     id: 3,
+//     qty: 2,
+//   },
+//   {
+//     id: 5,
+//     qty: 3,
+//   },
+//   {
+//     id: 1,
+//     qty: 1,
+//   },
+// ];

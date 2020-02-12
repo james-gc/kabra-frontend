@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import _map from "lodash/map";
@@ -7,42 +7,31 @@ import { Row, Col } from "@bootstrap-styled/v4";
 
 import CartItem from "../components/CartItem";
 
-import { fetchCartItems } from "../actions/cart";
+import { updateCartItemQuantity, removeFromCart } from "../actions/cart";
 
 function CartPage(props) {
-  useEffect(() => {
-    console.log("CartPage :: props ::", props);
-    props.fetchCartItems();
-    // return () => {
-    //   cleanup
-    // };
-  }, []);
+  // useEffect(() => {
+  //   console.log("CartPage :: props ::", props);
+  //   props.fetchCartItems();
+  //   // return () => {
+  //   //   cleanup
+  //   // };
+  // }, []);
 
-  function onQuantityIncremented(item) {
-    console.log("onQuantityIncremented :: ", item);
-    // props.onCartItemUpdate();
-  }
-  function onQuantityDecremented(item) {
-    console.log("onQuantityDecremented :: ", item);
-    // props.onCartItemUpdate();
-  }
-  function onRemoved(item) {
-    console.log("onRemoved :: ", item);
-    // props.onCartItemUpdate();
-  }
+  const { cartItems, updateCartItemQuantity, removeFromCart } = props;
 
-  const { cartItems } = props;
+  console.log('CartPage :: ',props );
 
   return (
     <>
-      {_map(cartItems, (item,) => (
+      {_map(cartItems, (item,index) => (
         <Row key={item.id}>
           <Col xs={12}>
             <CartItem
               item={item}
-              onQuantityIncremented={() => onQuantityIncremented(item)}
-              onQuantityDecremented={() => onQuantityDecremented(item)}
-              onRemoved={() => onRemoved(item)}
+              onQuantityIncremented={() => updateCartItemQuantity(index,"increase")}
+              onQuantityDecremented={() => updateCartItemQuantity(index,"decrease")}
+              onRemoved={() => removeFromCart(index)}
             />
           </Col>
         </Row>
@@ -56,7 +45,9 @@ const mapState = state => ({
 });
 
 const mapDispatch = {
-  fetchCartItems
+  updateCartItemQuantity,
+  removeFromCart
+  // fetchCartItems
   //   onCartItemUpdate
 };
 

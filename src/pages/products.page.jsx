@@ -9,8 +9,8 @@ import { fetchProducts } from "../actions/products";
 import { addToCart } from "../actions/cart";
 
 function ProductsPage(props) {
+  console.log('ProductsPage :: props', props);
   useEffect(() => {
-    console.log('props', props)
     props.fetchProducts();
     // return () => {
     //   cleanup
@@ -39,7 +39,8 @@ function ProductsPage(props) {
 }
 
 const mapState = state => ({
-  products: state.products
+  products: state.products,
+  cartItems: state.cart
 });
 
 const mapDispatch = {
