@@ -1,14 +1,12 @@
 import React from "react";
 import BootstrapProvider from "@bootstrap-styled/provider";
-import { Button } from "@bootstrap-styled/v4";
-// import GithubData from "./components/GithubData";
 import { Container } from "@bootstrap-styled/v4";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ProductPublicList from "./pages/products.public";
+import ProductsPage from "./pages/products.page";
+import CartPage from "./pages/cart.page";
 // import logo from './logo.svg';
 // import './App.css';
 import { Nav, NavItem, NavLink } from "@bootstrap-styled/v4";
-import {  } from "@bootstrap-styled/v4/lib/Nav/NavLink";
 
 function App() {
   return (
@@ -25,12 +23,13 @@ function App() {
            </Nav>
           <Switch>
             <Route path="/products">
-              <ProductPublicList />
+              <ProductsPage />
+            </Route>
+            <Route path="/cart">
+              <CartPage />
             </Route>
           </Switch>
         </Router>
-        <Button color="danger">Go To Products</Button>
-        {/* <GithubData /> */}
       </Container>
     </BootstrapProvider>
   );

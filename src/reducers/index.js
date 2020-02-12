@@ -2,10 +2,16 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { combineReducers } from "redux";
 import products from "./products";
+import cart from "./cart";
 
 const rootReducer = combineReducers({
-  products
+  products,
+  cart
+
 });
+
+
+
 
 const composeEnhancers =
   typeof window === "object" &&
@@ -17,4 +23,5 @@ const composeEnhancers =
 const enhancer = composeEnhancers(
   applyMiddleware(thunk)
 );
+
 export default createStore(rootReducer, enhancer);
