@@ -1,17 +1,18 @@
-import { createStore, applyMiddleware } from "redux";
+import { compose, combineReducers, createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { combineReducers } from "redux";
+import { routerMiddleware, connectRouter } from "connected-react-router";
+import { createBrowserHistory } from "history";
+
 import products from "./products";
 import cart from "./cart";
 
+export const history = createBrowserHistory();
+
 const rootReducer = combineReducers({
+  router: connectRouter(history),
   products,
   cart
-
 });
-
-
-
 
 const composeEnhancers =
   typeof window === "object" &&
@@ -21,7 +22,13 @@ const composeEnhancers =
   });
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk)
+  compose(
+    applyMiddleware(
+      routerMiddleware(history), // for dispatching history actions
+      thunk
+      // ... other middlewares ...
+    )
+  )
 );
 
 export default createStore(rootReducer, enhancer);

@@ -6,8 +6,8 @@ import {
   REMOVE_FROM_CART,
   UPDATE_CART_ITEM_QUANTITY
 } from "./types";
+import {push} from "connected-react-router";
 // import axios from 'axios';
-
 // const apiUrl = 'http://localhost:8080/api/products';
 
 export const fetchCartItemsAction = (cartItems) => {
@@ -55,6 +55,7 @@ export const fetchCartItems = () => {
 export const addToCart = product => {
   return dispatch => {
     dispatch(addToCartAction(product));
+    dispatch(push('/cart'));
     // return axios.get(apiUrl)
     //   .then(response => {
     //     dispatch(fetchData(response.data))
