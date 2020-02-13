@@ -16,7 +16,7 @@ function App() {
           <Col>
             <Nav>
               <NavItem>
-                <NavLink active to="/products" tag={Link}>
+                <NavLink active to="/" tag={Link}>
                   Products
                 </NavLink>
               </NavItem>
@@ -27,11 +27,11 @@ function App() {
               </NavItem>
             </Nav>
             <Switch>
-              <Route path="/products">
-                <ProductsPage />
-              </Route>
               <Route path="/cart">
                 <CartPage />
+              </Route>
+              <Route path="/">
+                <ProductsPage />
               </Route>
             </Switch>
           </Col>
