@@ -23,6 +23,15 @@ function ProductItem({ product, onAddToCartClick }) {
   );
 }
 
+ProductItem.defaultProps = {
+  product: {
+    name: "",
+    description: "",
+    image: "",
+    price: 0
+  }
+};
+
 // ProductItem.propTypes = {
 
 // }

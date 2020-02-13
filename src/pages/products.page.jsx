@@ -9,7 +9,7 @@ import { fetchProducts } from "../actions/products";
 import { addToCart } from "../actions/cart";
 
 function ProductsPage(props) {
-  console.log('ProductsPage :: props', props);
+  // console.log('ProductsPage :: props', props);
   useEffect(() => {
     props.fetchProducts();
     // return () => {
@@ -18,7 +18,7 @@ function ProductsPage(props) {
   }, [  ]);
 
   function onAddToCartClick(product) {
-    console.log("product to be added in the cart :: ", product);
+    // console.log("product to be added in the cart :: ", product);
     props.addToCart(product);
   }
 

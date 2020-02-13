@@ -19,7 +19,7 @@ function CartItem({
   onQuantityDecremented,
   onRemoved
 }) {
-  const { id, name, description, image, price, qty } = item;
+  const { name, description, image, price, qty } = item;
   return (
     <BorderedRow>
       <CenteredAlignCol sm={2}>
@@ -32,12 +32,22 @@ function CartItem({
         <Button onClick={onQuantityDecremented}>-</Button>
       </CenteredAlignCol>
       <CenteredAlignCol sm={2}>
-        {price*qty}
+        {price * qty}
         <Button onClick={onRemoved}>Remove</Button>
       </CenteredAlignCol>
     </BorderedRow>
   );
 }
+
+CartItem.defaultProps = {
+  item: {
+    name: "",
+    description: "",
+    image: "",
+    price: "",
+    qty: 0
+  }
+};
 
 // CartItem.propTypes = {
 

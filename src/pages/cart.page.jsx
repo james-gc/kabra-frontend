@@ -20,7 +20,7 @@ function CartPage(props) {
 
   const { cartItems, updateCartItemQuantity, removeFromCart } = props;
 
-  console.log('CartPage :: ',props );
+  // console.log('CartPage :: ',props );
 
   return (
     <>
