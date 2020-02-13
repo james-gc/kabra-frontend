@@ -14,21 +14,16 @@ const rootReducer = combineReducers({
   cart
 });
 
-const composeEnhancers =
-  typeof window === "object" &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-  });
-
-const enhancer = composeEnhancers(
-  compose(
-    applyMiddleware(
-      routerMiddleware(history), // for dispatching history actions
-      thunk
-      // ... other middlewares ...
-    )
+const enhancer = compose(
+  applyMiddleware(
+    routerMiddleware(history), // for dispatching history actions
+    thunk,
+    // typeof window === "object" &&
+    //   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+    //   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    //     // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    //   })
+    // ... other middlewares ...
   )
 );
-
 export default createStore(rootReducer, enhancer);
