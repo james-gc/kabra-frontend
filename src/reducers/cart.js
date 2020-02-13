@@ -20,7 +20,6 @@ export default function addToCart(state = [], action) {
     case UPDATE_CART_ITEM_QUANTITY:
       return produce(state, draftState => {
         const prevValue = draftState[action.index].qty;
-        console.log("prev value draftState", draftState, prevValue);
         const newValue=action.operation === "increase" ? prevValue + 1 : prevValue - 1;
 
         if (newValue > 0) {
